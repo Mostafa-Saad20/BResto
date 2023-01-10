@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<section class="menu-section px-5">
+    <div class="container-fluid px-5 py-5">
+        <h2>Contact </h2>
+        <hr>
+        <h4>Write your feedback ..</h4>
+        <form class="mt-5" action="~/Home/Contact" method="post">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Your Message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+               <input type="submit" value="Send" class="btn btn-dark">
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,29 @@
+﻿@model Resto.Models.CartItem
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+<section class="menu-section px-5 text-center">
+    <div class="container-fluid px-5 py-5">
+        <h3>Remove this Item from Cart ?</h3>
+        <div>
+            <hr />
+            
+            <h5>@Html.DisplayFor(model => model.Name)</h5>
+                
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color mt-5">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+    </div>
+</section>

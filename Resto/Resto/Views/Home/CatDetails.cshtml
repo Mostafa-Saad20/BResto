@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Resto.Models.Food>
+
+@{
+    ViewBag.Title = "CatDetails";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<section class="menu-section px-5" id="AjaxResponse">
+    <div class="container-fluid px-5 py-5">
+        <h3>@ViewBag.CatName</h3>
+        <hr>
+       
+        <div class="row mt-3">
+            <!-- Food Item -->
+            @foreach (var food in Model)
+            {
+                <div class="col-md-4 py-3">
+                    <div class="card" style="width:320px">
+                        <div class="card-body">
+                            <h4 class="card-title">@food.Name 
+                                @if (food.Size != null)
+                                { <span style="font-size: 16px;"> - @food.Size </span> }
+                            </h4>
+                            <p class="card-text">@food.Description</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>LE @food.Price</p>
+                                </div>
+                                <!-- Add to Cart -->
+                                <div id="@food.Id" class="col-md-6 d-flex flex-row-reverse">
+                                    <a href="../AddToCart?foodId=@food.Id" class="btn btn-dark" onclick="addToCart(@food.Id, @ViewBag.CustomerId)">
+                                        <i class="bi bi-cart-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             }
+            <!-- End Food Item -->
+        </div>
+         
+    </div>
+</section>

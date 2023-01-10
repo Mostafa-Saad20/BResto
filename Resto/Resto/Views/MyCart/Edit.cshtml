@@ -1,0 +1,43 @@
+﻿@model Resto.Models.CartItem
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<section class="menu-section px-5">
+    <div class="container-fluid px-5 py-5 text-center">
+
+        @using (Html.BeginForm())
+         {
+            @Html.AntiForgeryToken()
+
+            <center>
+                <div class="form">
+                    <h4>Edit Item Quantity</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+
+                    <div class="form-group" style="max-width: 150px">
+                        @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label" })
+                        <div >
+                            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="">
+                            <input type="submit" value="Save" class="btn btn-dark" />
+                        </div>
+                    </div>
+                </div>
+            </center>
+         }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</section>

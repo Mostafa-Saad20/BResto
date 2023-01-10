@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Resto.Models.Reservation>
+
+@{
+    ViewBag.Title = "AllReserves";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4>All Reservations</h4>
+<hr>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfGuests)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfTables)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfGuests)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfTables)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.ActionLink("Cancel", "CancelReservation", new { id=item.Id })
+            </td>
+        </tr>
+     }
+
+</table>

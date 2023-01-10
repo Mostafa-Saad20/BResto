@@ -1,0 +1,23 @@
+﻿@model Resto.Models.Admin
+
+@{
+    ViewBag.Title = "Logout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h4>Are you sure you want to Logout?</h4>
+
+<div>
+    
+    <hr />
+   
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Logout" class="btn btn-danger" />
+        </div>
+    }
+</div>
+

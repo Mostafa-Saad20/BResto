@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Resto.Models.CartItem>
+
+@{
+    ViewBag.Title = "My Cart";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+<section class="menu-section px-5">
+    <div class="container-fluid px-5 py-5">
+
+        <h3>My Cart</h3>
+        <hr />
+
+        <!-- When Cart is Not empty -->
+        @if (Model.Count() != 0)
+        {
+            <a href="../Home#Menu">
+                <i class="bi bi-arrow-left-circle"></i> Back to Menu
+            </a>
+
+            <table class="table mt-3">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </th>
+                    <th>
+                        Subtotal
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            LE @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                            <a href="../MyCart/Edit/@item.Id" class="text-primary">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            @ViewBag.EditItemError
+                        </td>
+                        <td>
+                            LE @(item.Price * item.Quantity)
+                        </td>
+                        <td>
+                            <a href="../MyCart/Delete/@item.Id" class="text-danger">
+                                <i class="bi bi-trash3-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+            <hr />
+            <div class="row mt-5">
+                <div class="col-md-9 pl-3">
+                    <h5> Total = <span class="text-success">@ViewBag.TotalCart EGP</span></h5>
+                </div>
+                <div class="col-md-3">
+                    <a href="../Orders/Create" class="btn btn-dark mb-3 mt-2">
+                        Continue to Order
+                        <i class="bi bi-arrow-right-circle"></i>
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <!-- when Cart is Empty -->
+            <div class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" fill="gray" class="bi bi-cart-x" viewBox="0 0 16 16">
+                    <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z" />
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                </svg>
+                <p style="font-size: 22px">Your Cart is Empty</p>
+                <a href="../Home#Menu">Go to Menu</a>
+            </div>
+        }
+
+
+    </div>
+</section>

@@ -1,0 +1,75 @@
+﻿@model Resto.Models.Payment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reservation.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reservation.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CardOwnerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardOwnerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CardNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CVV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CVV)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

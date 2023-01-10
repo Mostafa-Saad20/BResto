@@ -1,0 +1,37 @@
+﻿@model Resto.Models.Customer
+
+@{
+    ViewBag.Title = "My Profile";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<section class="menu-section px-5">
+    <div class="container-fluid px-5 py-5">
+        <h3>Profile</h3>
+        <hr>
+
+        <div class="pl-3">
+            <h3>
+                <i class="bi bi-person-circle"></i>
+                @Model.Name
+            </h3>
+
+            <p class="pl-2">
+                <i class="bi bi-envelope-fill"></i>
+                @Model.Email
+            </p>
+
+            <p class="pl-2">
+                <i class="bi bi-telephone-fill"></i>
+                @Model.Phone
+            </p>
+            <p class="pl-2">
+                <i class="bi bi-geo-alt-fill"></i>
+                @Model.Address
+            </p>
+
+            <a href="~/Home/Logout" class="btn btn-outline-danger">Logout</a>
+        </div>
+            
+    </div>
+</section>

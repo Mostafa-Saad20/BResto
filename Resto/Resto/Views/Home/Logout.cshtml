@@ -1,0 +1,25 @@
+﻿@model Resto.Models.Customer
+
+@{
+    ViewBag.Title = "Logout";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<section class="menu-section px-5">
+    <div class="container-fluid px-5 py-5">
+        
+        <h3>Are you sure, You want to Logout?</h3>
+        <hr>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Logout" class="btn btn-danger" /> |
+                @Html.ActionLink("Back to Profile", "MyProfile")
+            </div>
+         }
+
+    </div>
+</section>

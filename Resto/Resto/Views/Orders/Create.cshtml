@@ -1,0 +1,127 @@
+﻿@model Resto.Models.Order
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<section class="menu-section px-5">
+    <div class="container-fluid px-5 py-5">
+
+        <div class="row">
+            <!-- Form Part -->
+            <div class="col-md-9">
+                @using (Html.BeginForm())
+                 {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>Create New Order</h4>
+                        <hr />
+                        <p class="text-info">
+                            <i class="bi bi-info-circle-fill"></i>
+                            Please, Fill this Form to make a New Order.
+                        </p>
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @Value = Session["CustomerName"] } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                <p class="text-danger">@ViewBag.ErrorName</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Phone Number", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.CustomerPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CustomerPhone, "", new { @class = "text-danger" })
+                                <p class="text-danger">@ViewBag.ErrorNumber</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-7">
+                                @Html.DropDownListFor(model => model.Type, new SelectList(new[] { "Delivery", "Pickup"}), new { @id = "orderType", @class = "form-control", @onchange = "displayAddress()" })
+                                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="Address">
+                            @Html.Label("Delivery Address", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.DeliveryAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DeliveryAddress, "", new { @class = "text-danger" })
+                                <p class="text-danger">@ViewBag.ErrorAddress</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-7">
+                                <input type="submit" value="Submit Order" class="btn btn-dark" />
+                            </div>
+                        </div>
+                    </div>
+                 }
+            </div>
+            <!-- /End Form Part -->
+
+            <!-- Order Details Part -->
+            <div class="col-md-3">
+                <h5 class="mt-2">Order details</h5>
+                <hr>
+                <!-- Display Cart Items -->
+                @if (ViewBag.CartItems != null)
+                 {
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Quantity
+                            </th>
+                            <th>
+                                Subtotal
+                            </th>
+                        </tr>
+
+                        @foreach (var item in ViewBag.CartItems)
+                        {
+
+                            <tr>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.Price
+                                </td>
+                                <td>
+                                    @item.Quantity
+                                </td>
+                                <td>
+                                    @(item.Price * item.Quantity)
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                    <h5 class="mt-2"> Total = <span class="text-success">@ViewBag.TotalCart EGP</span></h5>
+                 }
+                <div>
+                    @Html.ActionLink("Back to Cart", "Index", "MyCart")
+                </div>
+            </div>
+            <!-- /End Order Details Part -->
+
+        </div>
+
+    </div>
+</section>

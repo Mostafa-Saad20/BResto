@@ -1,0 +1,83 @@
+﻿@model Resto.Models.Reservation
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+<section class="menu-section px-5">
+    <div class="container-fluid px-5 py-5">
+
+        @using (Html.BeginForm())
+         {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Book a Table</h4>
+                <hr />
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            <p class="text-danger">@ViewBag.ErrorName</p>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                            <p class="text-danger">@ViewBag.ErrorNumber</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        @Html.Label("Number of Guests", htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(model => model.NumberOfGuests, new SelectList(new[] { "1", "2", "3", "4", "5", "6", "more than 6 people" }), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NumberOfGuests, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        @Html.Label("Number of Tables", htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(model => model.NumberOfTables, new SelectList(new[] { "1", "2", "3", "more than 3 tables" }), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NumberOfTables, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                            <p class="text-danger">@ViewBag.ErrorDate</p>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                            <p class="text-danger">@ViewBag.ErrorTime</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Book Now" class="btn btn-dark" />
+                    </div>
+                </div>
+            </div>
+         }
+    </div>
+</section>
