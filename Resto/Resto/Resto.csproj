@@ -387,12 +387,21 @@
     <Compile Include="Migrations\202301102033125_UpdateColumns.designer.cs">
       <DependentUpon>202301102033125_UpdateColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301112127362_CreateFeedbackTable.cs" />
+    <Compile Include="Migrations\202301112127362_CreateFeedbackTable.designer.cs">
+      <DependentUpon>202301112127362_CreateFeedbackTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301112144334_CreateFeedbackTable1.cs" />
+    <Compile Include="Migrations\202301112144334_CreateFeedbackTable1.designer.cs">
+      <DependentUpon>202301112144334_CreateFeedbackTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\AppDBContext.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Reservation.cs" />
@@ -496,10 +505,13 @@
     <Content Include="Views\Admin\AllReserves.cshtml" />
     <Content Include="Views\Admin\CancelReservation.cshtml" />
     <Content Include="Views\Admin\Logout.cshtml" />
+    <Content Include="Views\Home\ConfirmFeedback.cshtml" />
+    <Content Include="Views\Admin\Feedbacks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
+    <Folder Include="Views\Feedbacks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -622,6 +634,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301102033125_UpdateColumns.resx">
       <DependentUpon>202301102033125_UpdateColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301112127362_CreateFeedbackTable.resx">
+      <DependentUpon>202301112127362_CreateFeedbackTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301112144334_CreateFeedbackTable1.resx">
+      <DependentUpon>202301112144334_CreateFeedbackTable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

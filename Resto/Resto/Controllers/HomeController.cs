@@ -79,11 +79,27 @@ namespace Resto.Controllers
             return View();
         }
 
+        // GET: /Contact
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        // POST: /Contact
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Contact(Feedback feedback)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Feedbacks.Add(feedback);
+                db.SaveChanges();
+                return View("ConfirmFeedback");
+            }
+
+            return View(feedback);
         }
 
         // GET: /MyProfile

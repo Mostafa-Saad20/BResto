@@ -96,6 +96,9 @@ namespace Resto.Controllers
                 var totalReserves = db.Reservations.ToList().Count();
                 ViewBag.TotalReserves = totalReserves;
 
+                var totalFeedback = db.Feedbacks.ToList().Count();
+                ViewBag.TotalFeedback = totalFeedback;
+
                 return View();
             }
             else return RedirectToAction("Login");
@@ -123,6 +126,19 @@ namespace Resto.Controllers
                 // check admins count ..
                 var reservs = db.Reservations.ToList();
                 return View(reservs);
+            }
+            else return RedirectToAction("Login");
+        }
+
+        // GET: Admin/Feedbacks
+        public ActionResult Feedbacks()
+        {
+            // check admin registration
+            if (Session["AdminRegister"] != null)
+            {
+                // check admins count ..
+                var feedbacks = db.Feedbacks.ToList();
+                return View(feedbacks);
             }
             else return RedirectToAction("Login");
         }

@@ -54,5 +54,6 @@ namespace Resto.Models
 
         }
 
+        public System.Data.Entity.DbSet<Resto.Models.Feedback> Feedbacks { get; set; }
     }
 }
